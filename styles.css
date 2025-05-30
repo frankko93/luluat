@@ -1,0 +1,1021 @@
+/* === CSS Reset and Base Styles === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    color: #3a3a3a;
+    background-color: #fdfbf7;
+    font-weight: 400;
+}
+
+/* === Natural Color Palette === */
+:root {
+    --ivory: #fdfbf7;
+    --warm-sand: #f5f1e8;
+    --soft-clay: #e8ddd4;
+    --warm-copper: #c08552;
+    --deep-copper: #a6713f;
+    --sage-green: #9caa8a;
+    --charcoal: #3a3a3a;
+    --smoke: #6b6b6b;
+    --mist: #f0ede6;
+    --whisper: #faf8f3;
+    
+    /* Gradients */
+    --gradient-warm: linear-gradient(135deg, var(--warm-copper) 0%, var(--soft-clay) 100%);
+    --gradient-earth: linear-gradient(135deg, var(--sage-green) 0%, var(--warm-sand) 100%);
+    --gradient-subtle: linear-gradient(135deg, var(--whisper) 0%, var(--mist) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px rgba(106, 107, 107, 0.08);
+    --shadow-warm: 0 8px 30px rgba(192, 133, 82, 0.15);
+    --shadow-natural: 0 6px 25px rgba(58, 58, 58, 0.1);
+    
+    /* Border radius */
+    --radius-soft: 16px;
+    --radius-round: 24px;
+    --radius-full: 50px;
+}
+
+/* === Typography === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Text', serif;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1.2rem;
+    color: var(--charcoal);
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1.2rem;
+    color: var(--smoke);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* === Container and Layout === */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* === Enhanced Buttons === */
+.btn-primary, .btn-secondary, .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--gradient-warm);
+    color: var(--ivory);
+    box-shadow: var(--shadow-warm);
+    transform: translateY(0);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(192, 133, 82, 0.25);
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-secondary {
+    background: var(--ivory);
+    color: var(--charcoal);
+    border: 2px solid var(--warm-copper);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-secondary:hover {
+    background: var(--warm-copper);
+    color: var(--ivory);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--charcoal);
+    border: 2px solid var(--charcoal);
+    backdrop-filter: blur(10px);
+}
+
+.btn-outline:hover {
+    background: var(--charcoal);
+    color: var(--ivory);
+    transform: translateY(-2px);
+}
+
+.btn-primary.large {
+    padding: 20px 40px;
+    font-size: 1.1rem;
+}
+
+/* === Header === */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(253, 251, 247, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(192, 133, 82, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo h2 {
+    margin: 0;
+    color: var(--warm-copper);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-family: 'Crimson Text', serif;
+}
+
+.logo-subtitle {
+    font-size: 0.75rem;
+    color: var(--sage-green);
+    display: block;
+    margin-top: -2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+}
+
+/* === Hero Section === */
+.hero {
+    padding: 140px 0 100px;
+    background: var(--gradient-subtle);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(156, 170, 138, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(192, 133, 82, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-container-vertical {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title-center {
+    font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+    margin-bottom: 0;
+    color: var(--charcoal);
+    max-width: 1000px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.highlight {
+    background: var(--gradient-warm);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-warm);
+    border-radius: 2px;
+    opacity: 0.3;
+}
+
+.video-container-hero-center {
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+}
+
+.video-container-hero-center iframe {
+    width: 100%;
+    border-radius: var(--radius-round);
+    box-shadow: var(--shadow-natural);
+    transition: transform 0.4s ease;
+}
+
+.video-container-hero-center:hover iframe {
+    transform: scale(1.01);
+}
+
+.hero-content-bottom {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+
+.hero-subtitle-center {
+    font-size: 1.15rem;
+    margin-bottom: 0;
+    color: var(--smoke);
+    line-height: 1.7;
+}
+
+.hero-cta-center {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* === Benefits Section === */
+.benefits-section {
+    padding: 120px 0;
+    background: var(--ivory);
+    position: relative;
+}
+
+.benefits-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 40%, rgba(232, 221, 212, 0.6) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(156, 170, 138, 0.3) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--charcoal);
+    position: relative;
+    z-index: 1;
+}
+
+.section-subtitle {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 1.1rem;
+    color: var(--smoke);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.benefit-card {
+    background: var(--ivory);
+    padding: 2.8rem 2.2rem;
+    border-radius: var(--radius-round);
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(192, 133, 82, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--gradient-earth);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-warm);
+}
+
+.benefit-card:hover::before {
+    opacity: 0.05;
+}
+
+.benefit-icon {
+    width: 90px;
+    height: 90px;
+    background: var(--gradient-warm);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 2rem;
+    position: relative;
+    transition: all 0.5s ease;
+    box-shadow: var(--shadow-warm);
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: translateY(-5px) rotate(5deg);
+    box-shadow: 0 15px 40px rgba(192, 133, 82, 0.3);
+}
+
+.benefit-icon i {
+    font-size: 2.2rem;
+    color: var(--ivory);
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover .benefit-icon i {
+    transform: scale(1.1);
+}
+
+.benefit-card h3 {
+    color: var(--charcoal);
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.benefit-card p {
+    color: var(--smoke);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* === Newsletter Section === */
+.newsletter-section {
+    padding: 100px 0;
+    background: var(--warm-sand);
+    position: relative;
+}
+
+.newsletter-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.newsletter-info h2 {
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-info p {
+    color: var(--smoke);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.newsletter-benefits {
+    list-style: none;
+    padding: 0;
+}
+
+.newsletter-benefits li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    color: var(--smoke);
+    font-size: 1rem;
+}
+
+.newsletter-benefits i {
+    color: var(--warm-copper);
+    margin-right: 16px;
+    font-size: 1.2rem;
+    width: 20px;
+    text-align: center;
+}
+
+.newsletter-form {
+    background: var(--ivory);
+    padding: 3.5rem 3rem;
+    border-radius: var(--radius-round);
+    box-shadow: var(--shadow-natural);
+    border: 1px solid rgba(192, 133, 82, 0.1);
+}
+
+.newsletter-form h3 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--charcoal);
+    font-family: 'Crimson Text', serif;
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 18px 24px;
+    border: 2px solid var(--soft-clay);
+    border-radius: var(--radius-soft);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: var(--ivory);
+    color: var(--charcoal);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--warm-copper);
+    box-shadow: 0 0 0 4px rgba(192, 133, 82, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-group input::placeholder {
+    color: var(--smoke);
+    opacity: 0.7;
+}
+
+.form-disclaimer {
+    font-size: 0.9rem;
+    color: var(--smoke);
+    text-align: center;
+    margin-top: 1.5rem;
+    line-height: 1.5;
+}
+
+/* === Shop Section === */
+.shop-section-simple {
+    padding: 120px 0;
+    background: var(--mist);
+    position: relative;
+}
+
+.shop-content-simple {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.shop-title {
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+}
+
+.shop-description {
+    color: var(--smoke);
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.shop-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.shop-feature {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--smoke);
+}
+
+.shop-feature i {
+    color: var(--warm-copper);
+    font-size: 1.3rem;
+    width: 24px;
+    text-align: center;
+}
+
+.shop-cta-main {
+    background: var(--ivory);
+    padding: 3.5rem 3rem;
+    border-radius: var(--radius-round);
+    text-align: center;
+    box-shadow: var(--shadow-natural);
+    border: 1px solid rgba(192, 133, 82, 0.1);
+}
+
+.shop-cta-content h3 {
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+    font-family: 'Crimson Text', serif;
+}
+
+.shop-cta-content p {
+    margin-bottom: 2rem;
+    color: var(--smoke);
+}
+
+.shop-guarantee {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--sage-green);
+}
+
+/* === About Section === */
+.about-section {
+    padding: 120px 0;
+    background: var(--ivory);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-intro {
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+    color: var(--smoke);
+    line-height: 1.8;
+}
+
+.about-features {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--soft-clay);
+}
+
+.feature:last-child {
+    border-bottom: none;
+}
+
+.feature i {
+    font-size: 1.8rem;
+    color: var(--warm-copper);
+    margin-top: 2px;
+    min-width: 32px;
+}
+
+.feature h4 {
+    color: var(--charcoal);
+    margin-bottom: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.feature p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.logo-showcase {
+    text-align: center;
+    padding: 4rem 3rem;
+    background: var(--gradient-subtle);
+    border-radius: var(--radius-round);
+    box-shadow: var(--shadow-natural);
+    border: 1px solid rgba(192, 133, 82, 0.1);
+}
+
+.logo-showcase h2 {
+    font-size: 3.2rem;
+    color: var(--warm-copper);
+    margin-bottom: 0.8rem;
+    letter-spacing: 4px;
+    font-family: 'Crimson Text', serif;
+}
+
+.logo-showcase p {
+    color: var(--sage-green);
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.logo-tagline {
+    font-style: italic;
+    color: var(--smoke);
+    font-size: 1rem;
+    font-family: 'Crimson Text', serif;
+}
+
+/* === Social Section === */
+.social-section-elegant {
+    padding: 100px 0;
+    background: var(--warm-sand);
+}
+
+.social-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.social-header h3 {
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+    font-family: 'Crimson Text', serif;
+}
+
+.social-header p {
+    color: var(--smoke);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 3rem;
+}
+
+.social-card {
+    background: var(--ivory);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-round);
+    text-decoration: none;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(192, 133, 82, 0.1);
+}
+
+.social-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-warm);
+}
+
+.social-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.social-card.instagram .social-icon {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-card.facebook .social-icon {
+    background: #1877f2;
+}
+
+.social-card.tiktok .social-icon {
+    background: #000000;
+}
+
+.social-card.whatsapp .social-icon {
+    background: #25d366;
+}
+
+.social-icon i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.social-info h4 {
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.social-info p {
+    color: var(--smoke);
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.social-action {
+    color: var(--warm-copper);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.social-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--ivory);
+    border-radius: var(--radius-round);
+    box-shadow: var(--shadow-soft);
+}
+
+.social-footer p {
+    margin: 0;
+    color: var(--smoke);
+    font-size: 1.1rem;
+}
+
+.social-footer strong {
+    color: var(--warm-copper);
+}
+
+/* === Footer === */
+.simple-footer {
+    padding: 30px 0;
+    background: var(--charcoal);
+    text-align: center;
+}
+
+.simple-footer p {
+    color: var(--mist);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* === Floating WhatsApp Button === */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.whatsapp-float a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    border-radius: 50%;
+    box-shadow: var(--shadow-warm);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-float i {
+    color: white;
+    font-size: 1.8rem;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .hero {
+        padding: 120px 0 80px;
+    }
+    
+    .hero-container-vertical {
+        padding: 0 20px;
+        gap: 40px;
+    }
+    
+    .hero-cta-center {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-cta-center .btn-primary,
+    .hero-cta-center .btn-outline {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .benefit-card {
+        padding: 2.2rem 1.8rem;
+    }
+    
+    .newsletter-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .shop-content-simple {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .social-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-container {
+        padding: 1rem 20px;
+    }
+    
+    .logo h2 {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+    }
+    
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .whatsapp-float a {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-container-vertical {
+        padding: 0 16px;
+    }
+    
+    .newsletter-form,
+    .shop-cta-main,
+    .logo-showcase {
+        padding: 2.5rem 2rem;
+    }
+    
+    .benefit-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .social-card {
+        padding: 2rem 1.5rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+    
+    .feature {
+        gap: 1rem;
+    }
+}
+
+/* === Animations === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.benefit-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.benefit-card:nth-child(1) { animation-delay: 0.1s; }
+.benefit-card:nth-child(2) { animation-delay: 0.2s; }
+.benefit-card:nth-child(3) { animation-delay: 0.3s; }
+.benefit-card:nth-child(4) { animation-delay: 0.4s; }
+.benefit-card:nth-child(5) { animation-delay: 0.5s; }
+.benefit-card:nth-child(6) { animation-delay: 0.6s; }
+
+.whatsapp-float a {
+    animation: pulse 2s infinite;
+}
+
+/* === Focus and Accessibility === */
+button:focus,
+input:focus,
+a:focus {
+    outline: 2px solid var(--warm-copper);
+    outline-offset: 2px;
+}
+
+/* === Custom Scrollbar === */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--mist);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--warm-copper);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--deep-copper);
+} 
