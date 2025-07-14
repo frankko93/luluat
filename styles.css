@@ -195,10 +195,38 @@ body::after {
 .hero-subtitle {
     font-size: 1.8rem;
     color: var(--color-accent-dark);
-    margin: 2rem 0 3rem;
+    margin: 2rem auto 3rem;
     font-weight: 300;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
     opacity: 0.9;
+    max-width: 800px;
+    line-height: 1.4;
+    position: relative;
+    padding: 0 20px;
+}
+
+.hero-subtitle::before,
+.hero-subtitle::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 60px;
+    background: linear-gradient(90deg, 
+        transparent,
+        var(--color-primary) 30%,
+        var(--color-primary) 70%,
+        transparent
+    );
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hero-subtitle::before {
+    top: -15px;
+}
+
+.hero-subtitle::after {
+    bottom: -15px;
 }
 
 .hero-subtitle .subtle {
@@ -208,6 +236,7 @@ body::after {
     position: relative;
     display: inline-block;
     padding: 0 0.5rem;
+    background: linear-gradient(120deg, transparent 0%, rgba(191, 161, 130, 0.1) 50%, transparent 100%);
 }
 
 .hero-subtitle .subtle::after {
@@ -219,8 +248,8 @@ body::after {
     height: 1px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        var(--color-primary) 20%, 
-        var(--color-primary) 80%, 
+        var(--color-primary) 30%, 
+        var(--color-primary) 70%, 
         transparent 100%
     );
 }
@@ -281,6 +310,7 @@ body::after {
     box-shadow: 0 15px 35px rgba(191, 161, 130, 0.25);
     margin-top: 3rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
 }
 
 .cta-button:hover {
@@ -292,6 +322,42 @@ body::after {
 .cta-button i {
     font-size: 1.8rem;
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+@media (max-width: 768px) {
+    .cta-button {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        gap: 12px;
+        width: auto;
+        min-width: auto;
+    }
+
+    .cta-button i {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-button {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        gap: 8px;
+        margin-top: 2rem;
+        flex-direction: row;
+        white-space: nowrap;
+        width: fit-content;
+    }
+
+    .cta-button i {
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    .hero-content .cta-button {
+        flex-direction: row !important;
+        display: inline-flex !important;
+    }
 }
 
 /* About Section */
@@ -549,7 +615,7 @@ body::after {
     width: 65px;
     height: 65px;
     border-radius: 18px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: 2.2rem;
@@ -558,12 +624,27 @@ body::after {
     z-index: 9999;
     border: 2px solid var(--color-secondary);
     animation: floatButton 3s ease-in-out infinite;
-    pointer-events: auto;
     text-decoration: none;
     transform: none !important;
     will-change: transform;
     backface-visibility: hidden;
     -webkit-font-smoothing: subpixel-antialiased;
+    line-height: 0;
+}
+
+.whatsapp-float .fab {
+    width: auto;
+    height: auto;
+    line-height: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-float i.fa-whatsapp {
+    position: relative;
+    top: 8px;
+    left: 10px;
 }
 
 .whatsapp-float::before {
@@ -1079,5 +1160,50 @@ html {
 
     .hero-title .big-text {
         font-size: 5.5rem;
+    }
+} 
+
+/* Top Logo */
+.top-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    background: transparent;
+}
+
+.header-logo {
+    max-width: 150px;
+    height: auto;
+    filter: brightness(1.1) contrast(1.1) drop-shadow(0 2px 4px rgba(17, 15, 10, 0.15));
+    transition: all 0.3s ease;
+    opacity: 0.85;
+}
+
+.header-logo:hover {
+    transform: scale(1.05);
+    opacity: 1;
+    filter: brightness(1.1) contrast(1.1) drop-shadow(0 3px 6px rgba(17, 15, 10, 0.25));
+}
+
+@media (max-width: 768px) {
+    .top-logo {
+        top: 15px;
+        left: 15px;
+    }
+    
+    .header-logo {
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-logo {
+        top: 10px;
+        left: 10px;
+    }
+    
+    .header-logo {
+        max-width: 90px;
     }
 } 
