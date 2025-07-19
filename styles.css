@@ -615,6 +615,25 @@ body::after {
     margin: 0 auto;
 }
 
+/* Tablet y móvil */
+@media screen and (max-width: 1068px) {
+    .social-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 500px;
+        gap: 25px;
+    }
+}
+
+/* Móvil */
+@media screen and (max-width: 480px) {
+    .social-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px;
+        max-width: 300px;
+        padding: 0 10px;
+    }
+}
+
 .social-button {
     display: flex;
     flex-direction: column;
@@ -630,6 +649,36 @@ body::after {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 768px) {
+    .social-button {
+        padding: 20px 15px;
+        gap: 10px;
+    }
+    
+    .social-button i {
+        font-size: 2rem;
+    }
+    
+    .social-button span {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-button {
+        padding: 15px 10px;
+        gap: 8px;
+    }
+    
+    .social-button i {
+        font-size: 1.6rem;
+    }
+    
+    .social-button span {
+        font-size: 0.9rem;
+    }
+}
+
 .social-button:hover {
     transform: translateY(-5px);
     background: var(--color-primary);
@@ -640,11 +689,54 @@ body::after {
 
 .social-button i {
     font-size: 2.5rem;
+    transition: transform 0.3s ease;
+}
+
+.social-button:hover i {
+    transform: scale(1.1);
 }
 
 .social-button span {
     font-size: 1.1rem;
     font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 500px;
+        gap: 20px;
+    }
+
+    .social-button {
+        padding: 20px 15px;
+    }
+
+    .social-button i {
+        font-size: 2rem;
+    }
+
+    .social-button span {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-grid {
+        gap: 15px;
+    }
+
+    .social-button {
+        padding: 15px 10px;
+    }
+
+    .social-button i {
+        font-size: 1.8rem;
+    }
+
+    .social-button span {
+        font-size: 0.9rem;
+    }
 }
 
 /* Footer */
@@ -688,7 +780,7 @@ body::after {
     bottom: 40px;
     right: 40px;
     background: var(--color-secondary);
-    color: var(--color-accent-dark);
+    color: var(--color-accent);
     width: 65px;
     height: 65px;
     border-radius: 18px;
@@ -700,10 +792,9 @@ body::after {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 9999;
     border: 2px solid var(--color-accent);
-    animation: floatButton 3s ease-in-out infinite;
+    animation: pulseAndFloat 3s ease-in-out infinite, glowEffect 4s ease-in-out infinite;
     text-decoration: none;
-    transform: none !important;
-    will-change: transform;
+    will-change: transform, box-shadow, border-color;
     backface-visibility: hidden;
     -webkit-font-smoothing: subpixel-antialiased;
     line-height: 0;
@@ -725,19 +816,38 @@ body::after {
 }
 
 .whatsapp-float:hover {
-    transform: translateY(-5px) !important;
+    transform: translateY(-5px) scale(1.1) !important;
     background: var(--color-primary);
     color: var(--color-accent);
     border-color: var(--color-accent);
-    box-shadow: 0 15px 30px rgba(17, 15, 10, 0.15);
+    box-shadow: 0 15px 30px rgba(17, 15, 10, 0.2);
+    animation-play-state: paused;
 }
 
-@keyframes floatButton {
-    0%, 100% {
-        transform: translateY(0);
+@keyframes pulseAndFloat {
+    0% {
+        transform: scale(1) translateY(0);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
     50% {
-        transform: translateY(-12px);
+        transform: scale(1.1) translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@keyframes glowEffect {
+    0% {
+        border-color: var(--color-accent);
+    }
+    50% {
+        border-color: var(--color-primary);
+    }
+    100% {
+        border-color: var(--color-accent);
     }
 }
 
@@ -841,7 +951,7 @@ html {
     }
 
     .company-logo {
-        max-width: 160px;
+        max-width: 130px;
     }
     
     .about-text h2 {
@@ -869,7 +979,7 @@ html {
     }
 
     .company-logo {
-        max-width: 120px;
+        max-width: 100px;
     }
     
     .about-text h2 {
