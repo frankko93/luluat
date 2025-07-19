@@ -7,12 +7,12 @@
 
 /* Custom Properties */
 :root {
-    --color-primary: #BFA182;
-    --color-secondary: #FDF3E8;
-    --color-accent: #E4BCB4;
-    --color-accent-dark: #AFA2A8;
-    --color-dark: #110F0A;
-    --color-overlay: rgba(253, 243, 232, 0.85);
+    --color-primary: #AFA2A8;
+    --color-secondary: #E4BCB4;
+    --color-accent: #FDF3E8;
+    --color-accent-dark: #110F0A;
+    --color-dark: #BFA182;
+    --color-overlay: rgba(228, 188, 180, 0.85);
 }
 
 /* Font Face for Boston Angel */
@@ -72,7 +72,8 @@ body::before {
     background-position: center;
     background-attachment: fixed;
     z-index: -2;
-    opacity: 0.25; /* Aumentado de 0.15 a 0.25 */
+    opacity: 0.2;
+    filter: brightness(0.8) contrast(1.1);
 }
 
 body::after {
@@ -82,8 +83,8 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
-    opacity: 0.85; /* Reducido de 0.92 a 0.85 para más transparencia */
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-dark) 100%);
+    opacity: 0.92;
     z-index: -1;
 }
 
@@ -109,8 +110,8 @@ body::after {
     background-image: url('images/hero.jpg');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.9) contrast(1.1);
-    opacity: 0.3; /* Aumentado de 0.2 a 0.3 */
+    filter: brightness(0.7) contrast(1.2);
+    opacity: 0.25;
     z-index: -1;
 }
 
@@ -230,7 +231,7 @@ body::after {
 }
 
 .hero-subtitle .subtle {
-    color: var(--color-primary);
+    color: var(--color-accent);
     font-style: italic;
     font-weight: 400;
     position: relative;
@@ -294,12 +295,27 @@ body::after {
 }
 
 /* CTA Button */
+@keyframes ctaPulse {
+    0% {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 15px 30px rgba(17, 15, 10, 0.2);
+        transform: scale(1.02);
+    }
+    100% {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: scale(1);
+    }
+}
+
 .cta-button {
     display: inline-flex;
     align-items: center;
     gap: 20px;
-    background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
-    color: var(--color-secondary);
+    background: var(--color-secondary);
+    color: var(--color-accent-dark);
     padding: 25px 50px;
     border-radius: 50px;
     text-decoration: none;
@@ -307,21 +323,46 @@ body::after {
     font-weight: 600;
     letter-spacing: 0.03em;
     transition: all 0.4s ease;
-    box-shadow: 0 15px 35px rgba(191, 161, 130, 0.25);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin-top: 3rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--color-accent);
     white-space: nowrap;
+    animation: ctaPulse 2s ease-in-out infinite;
+    position: relative;
+}
+
+.cta-button::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 52px;
+    border: 2px solid var(--color-accent);
+    opacity: 0;
+    transition: all 0.4s ease;
 }
 
 .cta-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 20px 45px rgba(191, 161, 130, 0.35);
-    background: linear-gradient(45deg, var(--color-accent), var(--color-primary));
+    transform: translateY(-5px);
+    background: var(--color-primary);
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: 0 15px 30px rgba(17, 15, 10, 0.15);
+    animation: none;
+}
+
+.cta-button:hover::after {
+    opacity: 1;
+    inset: -8px;
 }
 
 .cta-button i {
     font-size: 1.8rem;
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+    transition: transform 0.4s ease;
+}
+
+.cta-button:hover i {
+    transform: translateX(5px);
 }
 
 @media (max-width: 768px) {
@@ -387,7 +428,7 @@ body::after {
     grid-template-columns: 1fr 2fr;
     gap: 80px;
     align-items: center;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--color-primary);
     padding: 60px;
     border-radius: 40px;
     backdrop-filter: blur(10px);
@@ -399,9 +440,17 @@ body::after {
     text-align: center;
     padding: 40px;
     border-radius: 30px;
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--color-secondary);
     position: relative;
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.about-logo:hover {
+    background: var(--color-primary);
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
 }
 
 .company-logo {
@@ -458,22 +507,22 @@ body::after {
 .feature {
     text-align: center;
     padding: 25px 20px;
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--color-secondary);
     border-radius: 20px;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--color-accent);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .feature:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.18);
-    border-color: rgba(255, 255, 255, 0.25);
+    background: var(--color-primary);
+    border-color: var(--color-accent);
 }
 
 .feature i {
     font-size: 2rem;
-    color: var(--color-accent);
+    color: var(--color-primary);
     margin-bottom: 15px;
     display: block;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
@@ -481,9 +530,17 @@ body::after {
 
 .feature span {
     font-size: 1.1rem;
-    color: var(--color-secondary);
+    color: var(--color-accent-dark);
     font-weight: 500;
     letter-spacing: 0.02em;
+}
+
+.feature:hover i {
+    color: var(--color-accent);
+}
+
+.feature:hover span {
+    color: var(--color-accent);
 }
 
 .signature {
@@ -529,7 +586,25 @@ body::after {
 /* Social Media Section */
 .social-section {
     padding: 100px 0;
-    background: var(--color-secondary);
+    background: var(--color-accent);
+    position: relative;
+    text-align: center;
+}
+
+.social-title {
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.social-title h2 {
+    font-size: 1.6rem;
+    color: var(--color-accent-dark);
+    font-family: 'Questrial', sans-serif;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    font-weight: 400;
 }
 
 .social-grid {
@@ -549,16 +624,18 @@ body::after {
     background: var(--color-secondary);
     border-radius: 20px;
     text-decoration: none;
-    color: var(--color-primary);
+    color: var(--color-accent-dark);
     transition: all 0.3s ease;
-    border: 1px solid var(--color-accent);
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .social-button:hover {
-    transform: translateY(-10px);
-    background: var(--color-accent);
-    color: var(--color-secondary);
-    box-shadow: 0 15px 30px rgba(17, 15, 10, 0.1);
+    transform: translateY(-5px);
+    background: var(--color-primary);
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: 0 15px 30px rgba(17, 15, 10, 0.15);
 }
 
 .social-button i {
@@ -573,8 +650,8 @@ body::after {
 /* Footer */
 .footer {
     padding: 15px 0;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    color: var(--color-secondary);
+    background: var(--color-primary);
+    color: var(--color-accent);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -589,15 +666,15 @@ body::after {
     height: 2px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        var(--color-secondary) 25%, 
-        var(--color-secondary) 75%,
+        var(--color-accent) 25%, 
+        var(--color-accent) 75%,
         transparent 100%
     );
     opacity: 0.2;
 }
 
 .footer p {
-    color: var(--color-secondary);
+    color: var(--color-accent);
     font-size: 0.95rem;
     font-weight: 400;
     letter-spacing: 0.03em;
@@ -610,8 +687,8 @@ body::after {
     position: fixed;
     bottom: 40px;
     right: 40px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    color: var(--color-secondary);
+    background: var(--color-secondary);
+    color: var(--color-accent-dark);
     width: 65px;
     height: 65px;
     border-radius: 18px;
@@ -619,10 +696,10 @@ body::after {
     align-items: center;
     justify-content: center;
     font-size: 2.2rem;
-    box-shadow: 0 8px 25px rgba(191, 161, 130, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 9999;
-    border: 2px solid var(--color-secondary);
+    border: 2px solid var(--color-accent);
     animation: floatButton 3s ease-in-out infinite;
     text-decoration: none;
     transform: none !important;
@@ -647,25 +724,12 @@ body::after {
     left: 10px;
 }
 
-.whatsapp-float::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: -1;
-}
-
 .whatsapp-float:hover {
-    transform: translateY(-8px);
-    border-radius: 25px;
-    box-shadow: 0 15px 35px rgba(191, 161, 130, 0.4);
-}
-
-.whatsapp-float:hover::before {
-    opacity: 1;
+    transform: translateY(-5px) !important;
+    background: var(--color-primary);
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: 0 15px 30px rgba(17, 15, 10, 0.15);
 }
 
 @keyframes floatButton {
@@ -775,6 +839,10 @@ html {
         padding: 30px;
         border-radius: 30px;
     }
+
+    .company-logo {
+        max-width: 160px;
+    }
     
     .about-text h2 {
         font-size: 3rem;
@@ -798,6 +866,10 @@ html {
     .about-content {
         padding: 25px;
         border-radius: 25px;
+    }
+
+    .company-logo {
+        max-width: 120px;
     }
     
     .about-text h2 {
