@@ -253,43 +253,32 @@ function onPlayerReady(event) {
             }
         });
         
-        // Auto-hide button after 15 seconds
-        setTimeout(() => {
-            if (soundButton && !soundButton.classList.contains('hidden')) {
-                soundButton.classList.add('hidden');
-            }
-        }, 15000);
+        // No auto-hide - button stays until user activates sound
     }
 }
 
 function onPlayerStateChange(event) {
-    // Hide button when user interacts with video
-    if (event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.PAUSED) {
-        if (soundButton && !soundButton.classList.contains('hidden')) {
-            setTimeout(() => {
-                soundButton.classList.add('hidden');
-            }, 2000);
-        }
-    }
+    // Button only hides when user explicitly clicks it or unmutes manually
+    // No automatic hiding based on video state
 }
 
 // Fallback for when YouTube API is not available
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if YouTube API loaded after a reasonable delay
     setTimeout(() => {
-        if (!window.YT) {
-            // YouTube API failed to load, use simple fallback
-            const iframe = document.querySelector('.video-container iframe');
+        if (!window.YT || !window.YT.Player) {
+            console.log('YouTube API not available, using simple fallback');
             const btn = document.getElementById('videoSoundBtn');
             
-            if (iframe && btn) {
+            if (btn && !btn.hasAttribute('data-fallback-added')) {
+                btn.setAttribute('data-fallback-added', 'true');
                 btn.addEventListener('click', function() {
-                    // Simple fallback: hide button and let user manually unmute
+                    // Simple fallback: just hide button (user can manually unmute via video controls)
                     this.classList.add('hidden');
-                    alert('Haz click en el video y luego en el ícono de sonido para activar el audio');
                 });
             }
         }
-    }, 3000);
+    }, 5000);
 });
 
 // Initialize all functionality when DOM is ready
