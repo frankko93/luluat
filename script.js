@@ -218,6 +218,80 @@ window.addEventListener('error', function(e) {
     }
 });
 
+// YouTube Player API functionality
+let player;
+let soundButton;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-player', {
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    soundButton = document.getElementById('videoSoundBtn');
+    
+    if (soundButton) {
+        soundButton.addEventListener('click', function() {
+            // Unmute the video without reloading
+            if (player && typeof player.unMute === 'function') {
+                player.unMute();
+            }
+            
+            // Hide the button
+            this.classList.add('hidden');
+            
+            // Track the action
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'video_sound_activated', {
+                    'event_category': 'Video',
+                    'event_label': 'Sound Button API'
+                });
+            }
+        });
+        
+        // Auto-hide button after 15 seconds
+        setTimeout(() => {
+            if (soundButton && !soundButton.classList.contains('hidden')) {
+                soundButton.classList.add('hidden');
+            }
+        }, 15000);
+    }
+}
+
+function onPlayerStateChange(event) {
+    // Hide button when user interacts with video
+    if (event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.PAUSED) {
+        if (soundButton && !soundButton.classList.contains('hidden')) {
+            setTimeout(() => {
+                soundButton.classList.add('hidden');
+            }, 2000);
+        }
+    }
+}
+
+// Fallback for when YouTube API is not available
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        if (!window.YT) {
+            // YouTube API failed to load, use simple fallback
+            const iframe = document.querySelector('.video-container iframe');
+            const btn = document.getElementById('videoSoundBtn');
+            
+            if (iframe && btn) {
+                btn.addEventListener('click', function() {
+                    // Simple fallback: hide button and let user manually unmute
+                    this.classList.add('hidden');
+                    alert('Haz click en el video y luego en el ícono de sonido para activar el audio');
+                });
+            }
+        }
+    }, 3000);
+});
+
 // Initialize all functionality when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Luluat Landing Page loaded successfully!');

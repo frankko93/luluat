@@ -82,11 +82,16 @@
                 </p> -->
                 <div class="video-container" data-aos="zoom-in" data-aos-duration="800">
                     <iframe 
-                        src="https://www.youtube.com/embed/MGpsmk1Rpgg" 
+                        id="youtube-player"
+                        src="https://www.youtube.com/embed/MGpsmk1Rpgg?autoplay=1&mute=1&controls=1&rel=0&modestbranding=1&enablejsapi=1" 
                         frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen>
                     </iframe>
+                    <button class="video-sound-button" id="videoSoundBtn">
+                        <i class="fas fa-volume-up"></i>
+                        <span>Activar sonido</span>
+                    </button>
                 </div>
 
                 <a href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20ver%20su%20colección%20de%20joyas" 
@@ -181,6 +186,9 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- YouTube Player API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    
     <!-- AOS Animation Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
