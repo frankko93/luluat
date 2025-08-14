@@ -136,15 +136,40 @@ body::after {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    animation: titleEntrance 1.5s ease-out;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes titleEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateY(-5px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .hero-title .small-text {
     font-size: 2.5rem;
-    color: var(--color-accent-dark);
-    font-family: 'Questrial', sans-serif;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     margin-bottom: -0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 2;
 }
 
 .hero-title .medium-text {
@@ -152,11 +177,15 @@ body::after {
     color: var(--color-primary);
     font-style: italic;
     letter-spacing: 0.05em;
-    margin-bottom: -1rem;
+    margin-bottom: -0.5rem;
+    text-shadow: 4px 4px 8px rgba(175, 162, 168, 0.6);
+    font-weight: 600;
+    opacity: 0.7;
+    filter: brightness(0.8);
 }
 
 .hero-title .big-text {
-    font-size: 5rem;
+    font-size: 7.5rem;
     background: linear-gradient(45deg, var(--color-primary), var(--color-accent-dark));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -164,15 +193,23 @@ body::after {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin: 0.5rem 0;
+    font-weight: 900;
+    filter: drop-shadow(3px 3px 6px rgba(17, 15, 10, 0.3));
+    opacity: 0.6;
+    filter: brightness(0.7) drop-shadow(3px 3px 6px rgba(17, 15, 10, 0.3));
 }
 
 .hero-title .biggest-text {
-    font-size: 6.5rem;
+    font-size: 9rem;
     color: var(--color-dark);
-    text-shadow: 2px 2px 4px rgba(191, 161, 130, 0.2);
+    text-shadow: 4px 4px 8px rgba(191, 161, 130, 0.4), 2px 2px 4px rgba(17, 15, 10, 0.3);
     letter-spacing: 0.05em;
-    transform: scale(1.1);
+    transform: scale(1.2);
     margin-top: -1rem;
+    font-weight: 900;
+    position: relative;
+    opacity: 0.7;
+    filter: brightness(0.8);
 }
 
 .hero-title i {
@@ -608,27 +645,27 @@ body::after {
 
 .social-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    max-width: 800px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 /* Tablet y móvil */
 @media screen and (max-width: 1068px) {
     .social-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        max-width: 500px;
-        gap: 25px;
+        grid-template-columns: repeat(3, 1fr) !important;
+        max-width: 450px;
+        gap: 20px;
     }
 }
 
 /* Móvil */
 @media screen and (max-width: 480px) {
     .social-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 15px;
-        max-width: 300px;
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+        max-width: 280px;
         padding: 0 10px;
     }
 }
@@ -704,9 +741,9 @@ body::after {
 
 @media (max-width: 768px) {
     .social-grid {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 500px;
-        gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 450px;
+        gap: 15px;
     }
 
     .social-button {
@@ -722,23 +759,7 @@ body::after {
     }
 }
 
-@media (max-width: 480px) {
-    .social-grid {
-        gap: 15px;
-    }
 
-    .social-button {
-        padding: 15px 10px;
-    }
-
-    .social-button i {
-        font-size: 1.8rem;
-    }
-
-    .social-button span {
-        font-size: 0.9rem;
-    }
-}
 
 /* Footer */
 .footer {
@@ -1007,20 +1028,27 @@ html {
         max-width: 960px;
     }
 
+    .hero-title {
+        padding: 1.5rem 2.5rem;
+    }
+
     .hero-title .biggest-text {
-        font-size: 5.5rem;
+        font-size: 7.5rem;
     }
 
     .hero-title .big-text {
-        font-size: 4.5rem;
+        font-size: 6.5rem;
     }
 
     .hero-title .medium-text {
-        font-size: 2.8rem;
+        font-size: 2.2rem;
     }
 
     .hero-title .small-text {
-        font-size: 2.2rem;
+        font-size: 2rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        color: #000000;
     }
 }
 
@@ -1029,20 +1057,27 @@ html {
         max-width: 720px;
     }
 
+    .hero-title {
+        padding: 1.5rem 2rem;
+    }
+
     .hero-title .biggest-text {
-        font-size: 4.5rem;
+        font-size: 6.5rem;
     }
 
     .hero-title .big-text {
-        font-size: 3.8rem;
+        font-size: 5.5rem;
     }
 
     .hero-title .medium-text {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
     }
 
     .hero-title .small-text {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        color: #000000;
     }
 
     .hero-subtitle {
@@ -1083,9 +1118,9 @@ html {
 
     /* Social Section */
     .social-grid {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 600px;
-        gap: 25px;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 500px;
+        gap: 20px;
     }
 }
 
@@ -1099,20 +1134,28 @@ html {
         padding: 60px 0;
     }
 
+    .hero-title {
+        padding: 1.2rem 1.5rem;
+        border-radius: 15px;
+    }
+
     .hero-title .biggest-text {
-        font-size: 3.8rem;
+        font-size: 5.5rem;
     }
 
     .hero-title .big-text {
-        font-size: 3.2rem;
+        font-size: 4.5rem;
     }
 
     .hero-title .medium-text {
-        font-size: 2.2rem;
+        font-size: 1.2rem;
     }
 
     .hero-title .small-text {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        color: #000000;
     }
 
     .hero-subtitle {
@@ -1187,21 +1230,29 @@ html {
         padding: 40px 0;
     }
 
+    .hero-title {
+        padding: 1rem 1.2rem;
+        border-radius: 12px;
+    }
+
     .hero-title .biggest-text {
-        font-size: 3rem;
+        font-size: 4.2rem;
     }
 
     .hero-title .big-text {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
     }
 
     .hero-title .medium-text {
-        font-size: 1.8rem;
+        font-size: 1rem;
     }
 
     .hero-title .small-text {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         letter-spacing: 0.15em;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        color: #000000;
     }
 
     .hero-subtitle {
@@ -1260,7 +1311,8 @@ html {
     /* Social Section */
     .social-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 25px;
+        max-width: 250px;
     }
 
     .social-button {
@@ -1278,20 +1330,28 @@ html {
 }
 
 @media (max-width: 360px) {
+    .hero-title {
+        padding: 0.8rem 1rem;
+        border-radius: 10px;
+    }
+
     .hero-title .biggest-text {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
     }
 
     .hero-title .big-text {
-        font-size: 2rem;
+        font-size: 2.8rem;
     }
 
     .hero-title .medium-text {
-        font-size: 1.5rem;
+        font-size: 0.8rem;
     }
 
     .hero-title .small-text {
-        font-size: 1.2rem;
+        font-size: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        color: #000000;
     }
 
     .hero-subtitle {
