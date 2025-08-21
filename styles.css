@@ -123,11 +123,11 @@ body::after {
 .hero-title {
     font-weight: 700;
     margin-bottom: 2rem;
-    line-height: 1.1;
+    line-height: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.1rem;
+    gap: 0;
     animation: titleEntrance 1.5s ease-out;
     background: rgba(191, 161, 130, 0.3);
     padding: 2rem 3rem;
@@ -154,23 +154,25 @@ body::after {
 /* New typography styles */
 .hero-title .script-text {
     font-family: 'Great Vibes', cursive;
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: white;
     font-weight: 400;
     letter-spacing: 0.02em;
     /* margin-bottom: 0.3rem; */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
 }
 
 .hero-title .sans-text {
     font-family: 'Arimo', sans-serif;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     color: white;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     margin-top: 0.3rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
 }
 
 .hero-title .bold-text {
@@ -179,13 +181,14 @@ body::after {
 
 .hero-title .serif-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 6rem;
+    font-size: 5rem;
     color: white;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin: 0.2rem 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
 }
 
 
@@ -503,11 +506,7 @@ body::after {
 .about-logo {
     text-align: center;
     padding: 40px;
-    border-radius: 20px;
-    background: var(--color-secondary);
     position: relative;
-    border: 2px solid var(--color-secondary);
-    box-shadow: 0 8px 16px rgba(17, 15, 10, 0.12);
     transition: all 0.3s ease;
 }
 
@@ -568,10 +567,10 @@ body::after {
 .feature {
     text-align: center;
     padding: 25px 20px;
-    background: var(--color-primary);
+    background: var(--color-accent);
     border-radius: 15px;
     transition: all 0.3s ease;
-    border: 2px solid var(--color-accent);
+    border: 2px solid var(--color-primary);
     box-shadow: 0 8px 16px rgba(17, 15, 10, 0.12);
 }
 
@@ -583,7 +582,7 @@ body::after {
 
 .feature i {
     font-size: 2rem;
-    color: var(--color-primary);
+    color: var(--color-accent-dark);
     margin-bottom: 15px;
     display: block;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
@@ -591,7 +590,7 @@ body::after {
 
 .feature span {
     font-size: 1.1rem;
-    color: var(--color-accent);
+    color: var(--color-accent-dark);
     font-weight: 500;
     letter-spacing: 0.02em;
 }
@@ -608,14 +607,14 @@ body::after {
     border-left: 3px solid var(--color-primary);
     padding: 25px;
     margin-top: 2rem;
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--color-accent);
     border-radius: 0 15px 15px 0;
     position: relative;
     box-shadow: 0 6px 12px rgba(17, 15, 10, 0.08);
 }
 
 .signature p {
-    color: var(--color-accent);
+    color: var(--color-accent-dark);
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
@@ -623,7 +622,7 @@ body::after {
 }
 
 .signature small {
-    color: var(--color-accent);
+    color: var(--color-accent-dark);
     font-style: italic;
     opacity: 0.95;
     font-size: 1rem;
@@ -788,12 +787,13 @@ body::after {
 
 /* Footer */
 .footer {
-    padding: 15px 0;
+    padding: 20px 0;
     background: var(--color-primary);
     color: var(--color-accent);
     text-align: center;
     position: relative;
     overflow: hidden;
+    margin-bottom: 0;
 }
 
 .footer::before {
@@ -826,8 +826,8 @@ body::after {
     position: fixed;
     bottom: 40px;
     right: 40px;
-    background: var(--color-secondary);
-    color: var(--color-accent);
+    background: #25D366;
+    color: white;
     width: 65px;
     height: 65px;
     border-radius: 18px;
@@ -835,10 +835,10 @@ body::after {
     align-items: center;
     justify-content: center;
     font-size: 2.2rem;
-    box-shadow: 0 8px 16px rgba(228, 188, 180, 0.3);
+    box-shadow: 0 8px 16px rgba(37, 211, 102, 0.3);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 9999;
-    border: 2px solid var(--color-accent);
+    border: 2px solid #25D366;
     animation: pulseAndFloat 3s ease-in-out infinite, glowEffect 4s ease-in-out infinite;
     text-decoration: none;
     will-change: transform, box-shadow, border-color;
@@ -864,10 +864,10 @@ body::after {
 
 .whatsapp-float:hover {
     transform: translateY(-3px) scale(1.05) !important;
-    background: var(--color-primary);
-    color: var(--color-accent);
-    border-color: var(--color-accent);
-    box-shadow: 0 12px 24px rgba(228, 188, 180, 0.4);
+    background: #128C7E;
+    color: white;
+    border-color: #128C7E;
+    box-shadow: 0 12px 24px rgba(37, 211, 102, 0.4);
     animation-play-state: paused;
 }
 
@@ -888,13 +888,13 @@ body::after {
 
 @keyframes glowEffect {
     0% {
-        border-color: var(--color-accent);
+        border-color: #25D366;
     }
     50% {
-        border-color: var(--color-secondary);
+        border-color: #128C7E;
     }
     100% {
-        border-color: var(--color-accent);
+        border-color: #25D366;
     }
 }
 
@@ -1140,6 +1140,11 @@ html {
         max-width: 540px;
         padding: 0 20px;
     }
+    
+    /* Footer spacing for tablets */
+    .footer {
+        padding: 25px 0;
+    }
 
     .hero {
         padding: 30px 0 0 0;
@@ -1148,27 +1153,6 @@ html {
     .hero-title {
         padding: 1.2rem 1.5rem;
         border-radius: 15px;
-        gap: 0.3rem;
-    }
-
-    .hero-title .biggest-text {
-        font-size: 2.8rem;
-    }
-
-    .hero-title .big-text {
-        font-size: 2.4rem;
-    }
-
-    .hero-title .medium-text {
-        font-size: 1.8rem;
-    }
-
-    .hero-title .small-text {
-        font-size: 2.2rem;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 900;
-        color: #000000;
-        margin-bottom: 0;
     }
 
     .hero-subtitle {
@@ -1251,28 +1235,6 @@ html {
     .hero-title {
         padding: 0.8rem 1rem;
         border-radius: 12px;
-        gap: 0.2rem;
-    }
-
-    .hero-title .biggest-text {
-        font-size: 1.8rem;
-    }
-
-    .hero-title .big-text {
-        font-size: 1.5rem;
-    }
-
-    .hero-title .medium-text {
-        font-size: 1.2rem;
-    }
-
-    .hero-title .small-text {
-        font-size: 1.6rem;
-        letter-spacing: 0.1em;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 900;
-        color: #000000;
-        margin-bottom: 0;
     }
 
     .hero-subtitle {
@@ -1355,33 +1317,31 @@ html {
         bottom: 20px;
         right: 20px;
     }
+    
+    /* Footer for mobile */
+    .footer {
+        padding: 25px 0 30px 0;
+        margin-bottom: 0;
+    }
 }
 
 @media (max-width: 360px) {
     .hero-title {
-        padding: 0.8rem 1rem;
+        padding: 0.5rem 0.6rem;
         border-radius: 10px;
-        gap: 0.1rem;
     }
 
-    .hero-title .biggest-text {
-        font-size: 1.5rem;
-    }
-
-    .hero-title .big-text {
-        font-size: 1.3rem;
-    }
-
-    .hero-title .medium-text {
+    .hero-title .script-text {
         font-size: 1.1rem;
     }
-
-    .hero-title .small-text {
+    
+    .hero-title .serif-text {
         font-size: 1.4rem;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 900;
-        color: #000000;
-        margin-bottom: 0;
+    }
+    
+    .hero-title .sans-text {
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
     }
 
     .hero-subtitle {
@@ -1410,11 +1370,39 @@ html {
     }
 }
 
+@media (max-width: 320px) {
+    .hero-title {
+        padding: 0.4rem 0.5rem;
+        border-radius: 8px;
+    }
+
+    .hero-title .script-text {
+        font-size: 0.9rem;
+    }
+    
+    .hero-title .serif-text {
+        font-size: 1.1rem;
+    }
+    
+    .hero-title .sans-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.03em;
+    }
+    
+    .container {
+        padding: 0 5px;
+    }
+}
+
 /* Fix for devices with notches */
 @supports(padding: max(0px)) {
     .whatsapp-float {
         padding-bottom: max(20px, env(safe-area-inset-bottom));
         padding-right: max(20px, env(safe-area-inset-right));
+    }
+    
+    .footer {
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
     }
 }
 
@@ -1491,17 +1479,32 @@ html {
 }
 
 /* Responsive typography styles */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .hero-title .script-text {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
     
     .hero-title .serif-text {
-        font-size: 3.5rem;
+        font-size: 4.5rem;
     }
     
     .hero-title .sans-text {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
+        letter-spacing: 0.12em;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title .script-text {
+        font-size: 2.2rem;
+    }
+    
+    .hero-title .serif-text {
+        font-size: 3.2rem;
+    }
+    
+    .hero-title .sans-text {
+        font-size: 1.6rem;
         letter-spacing: 0.1em;
     }
     
@@ -1512,16 +1515,16 @@ html {
 
 @media (max-width: 480px) {
     .hero-title .script-text {
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
     
     .hero-title .serif-text {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
     }
     
     .hero-title .sans-text {
-        font-size: 1.4rem;
-        letter-spacing: 0.08em;
+        font-size: 1rem;
+        letter-spacing: 0.06em;
     }
     
     .hero-title .bold-text {
@@ -1555,8 +1558,8 @@ html {
 /* Top Logo */
 .top-logo {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 25px;
+    left: 25px;
     z-index: 10;
     background: transparent;
 }
@@ -1577,8 +1580,8 @@ html {
 
 @media (max-width: 768px) {
     .top-logo {
-        top: 15px;
-        left: 15px;
+        top: 25px;
+        left: 25px;
     }
     
     .header-logo {
@@ -1588,8 +1591,8 @@ html {
 
 @media (max-width: 480px) {
     .top-logo {
-        top: 10px;
-        left: 10px;
+        top: 30px;
+        left: 30px;
     }
     
     .header-logo {
